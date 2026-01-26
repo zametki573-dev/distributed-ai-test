@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Пустая страница A</title>
+  <style>
+    body { background: #111; color: #eee; font-family: monospace; padding: 40px; }
+    .log { border: 1px solid #333; padding: 20px; margin-top: 20px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+<h1>Пустая страница A</h1>
+<div class="log" id="log">Ожидание сигнала…</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const input = params.get("input");
+if (input) document.getElementById("log").textContent = `Сигнал получен на A:\n"${input}"`;
+</script>
+
+</body>
+</html>

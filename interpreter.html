@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Интерпретатор</title>
+</head>
+<body>
+<h1>Интерпретатор</h1>
+<p>Перенаправляет сигнал на A, B или C</p>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const input = params.get("input");
+
+let target = "a.html"; // по умолчанию
+if (input === "привет") target = "a.html";
+else if (input === "задача") target = "b.html";
+else target = "c.html";
+
+// перенаправление
+window.location.href = target + "?input=" + encodeURIComponent(input);
+</script>
+</body>
+</html>
