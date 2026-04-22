@@ -1,0 +1,1 @@
+rclone mount mega:Shtolni S: --vfs-cache-mode full
