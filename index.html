@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>LUX_NODE_STOLNI</title>
+    <script>
+        // Твоя база маршрутов (Схема)
+        const SCHEMA = {
+            "main": "ССЫЛКА_НА_ПАПКУ_МЕГА_ШТОЛЬНИ",
+            "models": "ССЫЛКА_НА_МОДЕЛИ",
+            "renders": "ССЫЛКА_НА_РЕНДЕРЫ"
+        };
+
+        // Читаем команду из ссылки ярлыка
+        const urlParams = new URLSearchParams(window.location.search);
+        const task = urlParams.get('do') || 'main';
+
+        // Мгновенный прыжок в хранилище
+        if (SCHEMA[task]) {
+            window.location.replace(SCHEMA[task]);
+        } else {
+            document.write("Ошибка связи: Узел не распознал команду.");
+        }
+    </script>
+</head>
+<body style="background:black; color:white; font-family:monospace; display:flex; justify-content:center; align-items:center; height:100vh;">
+    ИНТЕРПРЕТАЦИЯ ЛЮКС: ПОДКЛЮЧЕНИЕ К ХРАНИЛИЩУ...
+</body>
+</html>
