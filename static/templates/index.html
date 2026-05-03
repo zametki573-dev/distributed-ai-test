@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>R•X CORE SYSTEM</title>
+    <script src="../brain.js" defer></script> 
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
         
@@ -24,30 +25,10 @@
     </style>
 </head>
 <body>
-    <img src="static/Слайд3.PNG" class="layer-bg">
-    <img src="static/rey_character.png" class="layer-rey">
-    <img src="static/ui_panels.png" class="layer-ui">
+    <img src="../Слайд3.PNG" class="layer-bg">
+    <img src="../rey_character.png" class="layer-rey">
+    <img src="../ui_panels.png" class="layer-ui">
     
     <div id="greeting">Инициализация системы...</div>
-
-    <script>
-        const greetingEl = document.getElementById('greeting');
-        const hour = new Date().getHours();
-        
-        // Логика иронии
-        let message = "";
-        if (hour >= 0 && hour < 6) {
-            message = "Вам не спится? Заходите, в это время суток ирония препарируется особенно остро.";
-        } else if (hour >= 6 && hour < 12) {
-            message = "Доброе утро. Надеюсь, ваш кофе крепче моих структур данных.";
-        } else {
-            message = "К вашим услугам. Но не ждите, что я буду улыбаться.";
-        }
-        
-        greetingEl.innerText = message;
-
-        // "Черная книга" — логирование захода в консоль (или можно отправить на Telegram)
-        console.log(`Система R•X: Пользователь зафиксирован в ${new Date().toLocaleTimeString()}`);
-    </script>
 </body>
 </html>
