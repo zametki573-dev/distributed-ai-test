@@ -1,32 +1,26 @@
-// brain.js — Центральный процессор системы R•X
-const RX_CORE = {
-    // 1. Память и Связи
-    memory: {
-        last_visit: localStorage.getItem('rx_last_time') || "Первый запуск",
-        mega_storage: "https://mega.nz/...", // Путь к твоим чертежам
-        ai_status: "Active"
-    },
+// Ждем, пока загрузится весь DOM (страница)
+document.addEventListener("DOMContentLoaded", () => {
+    const inputField = document.getElementById('user-input');
+    const greeting = document.getElementById('greeting'); // Тот самый слой для ответов
 
-    // 2. Логика Иронии (та самая, что была в Python)
-    getGreeting: function() {
-        const hour = new Date().getHours();
-        if (hour >= 0 && hour < 6) return "Вам не спится? В это время ирония препарируется особенно остро.";
-        if (hour >= 6 && hour < 12) return "Система активна. Надеюсь, ваш кофе крепче моих структур.";
-        return "К вашим услугам. Но не ждите, что я буду улыбаться.";
-    },
-
-    // 3. Фиксация времени (Запись в "Черную книгу")
-    logActivity: function() {
-        const now = new Date().toLocaleString();
-        localStorage.setItem('rx_last_time', now);
-        console.log(`[R•X System]: Доступ зафиксирован в ${now}`);
-        // Здесь мы позже добавим fetch() для отправки данных в облако или Telegram
-    }
-};
-
-// Запуск систем при загрузке
-document.addEventListener('DOMContentLoaded', () => {
-    RX_CORE.logActivity();
-    const greetBox = document.getElementById('greeting');
-    if (greetBox) greetBox.innerText = RX_CORE.getGreeting();
+    // Слушаем нажатие клавиш в поле ввода
+    inputField.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            let userText = inputField.value;
+            inputField.value = ''; // Очищаем поле после ввода
+            
+            // Запускаем процесс "мышления"
+            processInput(userText);
+        }
+    });
 });
+
+function processInput(text) {
+    const greeting = document.getElementById('greeting');
+    
+    // Пока что просто выводим текст обратно, имитируя, что Рей нас слышит
+    greeting.innerText = "Рей анализирует: " + text;
+    
+    // Здесь позже мы подключим связь с ИИ-моделью!
+    console.log("Запрос отправлен в ядро:", text);
+}
