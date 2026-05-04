@@ -1,26 +1,33 @@
-// Ждем, пока загрузится весь DOM (страница)
+// Ждем загрузки интерфейса
 document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById('user-input');
-    const greeting = document.getElementById('greeting'); // Тот самый слой для ответов
+    const greeting = document.getElementById('greeting');
 
-    // Слушаем нажатие клавиш в поле ввода
-    inputField.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            let userText = inputField.value;
-            inputField.value = ''; // Очищаем поле после ввода
-            
-            // Запускаем процесс "мышления"
-            processInput(userText);
-        }
-    });
+    // Проверяем, что элементы найдены, чтобы не было ошибок
+    if (inputField && greeting) {
+        inputField.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                let userText = inputField.value;
+                if (userText.trim() !== "") {
+                    inputField.value = ''; // Очищаем поле
+                    processInput(userText);
+                }
+            }
+        });
+    }
 });
 
-function processInput(text) {
+// Основная функция обработки
+async function processInput(text) {
     const greeting = document.getElementById('greeting');
     
-    // Пока что просто выводим текст обратно, имитируя, что Рей нас слышит
-    greeting.innerText = "Рей анализирует: " + text;
+    // Эффект печатающегося текста для Рея
+    greeting.innerText = "Рей анализирует запрос...";
     
-    // Здесь позже мы подключим связь с ИИ-моделью!
-    console.log("Запрос отправлен в ядро:", text);
+    console.log("Сообщение получено системой:", text);
+
+    // Имитация задержки "мыслей" ИИ
+    setTimeout(() => {
+        greeting.innerText = "Система зафиксировала: " + text + ". Пока я работаю в тестовом режиме, но скоро здесь будет мой настоящий ответ.";
+    }, 1000);
 }
